@@ -14,39 +14,116 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-<!--		<div class="site-info">-->
-<!--			<a href="--><?php //echo esc_url( __( 'https://wordpress.org/', 'gh-moz-exam' ) ); ?><!--">--><?php //printf( esc_html__( 'Proudly powered by %s', 'gh-moz-exam' ), 'WordPress' ); ?><!--</a>-->
-<!--			<span class="sep"> | </span>-->
-<!--			--><?php //printf( esc_html__( 'Theme: %1$s by %2$s.', 'gh-moz-exam' ), 'gh-moz-exam', '<a href="https://automattic.com/" rel="designer">Underscores.me</a>' ); ?>
-<!--		</div><!-- .site-info -->
 
-        <div class="container">
-            <div class="row">
-                <p class="copywrit">&copy; <?php echo __('Copyright 2012', 'blogname'); ?></p>
-
-                <div class="footer-social">
-                    <?php
-                    if( get_theme_mod( 'fb_chec' ) == true ) {
-                        ?>
-                        <a href="<?php echo get_theme_mod( 'fb_link' ); ?>" class="fb"></a>
-                        <?php
-                    }
-                    if( get_theme_mod( 'twit_chec' ) == true ) {
-                        ?>
-                        <a href="<?php echo get_theme_mod( 'twit_link' ); ?>" class="tw"></a>
-                        <?php
-                    }
-                    if( get_theme_mod( 'in_chec' ) == true ) {
-                        ?>
-                        <a href="<?php echo get_theme_mod( 'in_link' ); ?>" class="in"></a>
-                    <?php } ?>
-                </div>
-
-                <div class="foot-menu">
-                    <?php wp_nav_menu( array( 'theme_location' => 'menu-2', 'link_before' => '(before)', 'link_after' => '(after)', ) ); ?>
+        <div class="clients ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><?php echo __('Featured Clients', 'gh-moz-exam'); ?></h4>
+                        <div class="client">
+                            <?php query_posts('post_type=clients'); ?>
+                            <?php if(have_posts()) : ?>
+<!--                                <div class="row">-->
+<!--                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">-->
+<!--                                        <div class="carousel-inner" role="listbox">-->
+<!--                                            <div class="carousel-item active">-->
+<!--                                                <img class="d-block img-fluid" src="..." alt="First slide">-->
+<!--                                            </div>-->
+<!--                                            <div class="carousel-item active">-->
+<!--                                                <img class="d-block img-fluid" src="..." alt="Second slide">-->
+<!--                                            </div>-->
+<!--                                            <div class="carousel-item active">-->
+<!--                                                <img class="d-block img-fluid" src="..." alt="Third slide">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                    <ul>
+                                        <?php while (have_posts() ) : the_post(); ?>
+                                            <li class="slide-group">
+                                                <?php the_post_thumbnail(); ?>
+                                            </li>
+                                        <?php endwhile; ?>
+                                    </ul>
+                                </div>
+                            <?php endif;
+                            wp_reset_query();
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+        <div class="contact-section darkness">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 contact">
+                        <h3><?php echo __('Contact Us:', 'gh-moz-exam'); ?></h3>
+                        <p>It is a long established fact that a reader will be distracted by
+                            the readable content of a page when looking at its layout.</p>
+                        <div class="phone">
+                            icon
+                            <span><?php echo get_theme_mod('footer', '123456789')?></span>
+                        </div>
+                        <div class="addres">
+                            icon
+                            <span></span>
+                        </div>
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10375.48860485298!2d32.075212799999996!3d49.449133350000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1491642735446" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 form">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-footer-section">
+            <div class="container">
+                <div class="foot-logo main-logo">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <?php echo get_theme_mod('logo_first', 'aj'); ?>
+                        <span><?php echo get_theme_mod('logo_second', 'y'); ?></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copywriting-footer-section">
+            <div class="container">
+                <p class="copywrit">&copy;<?php echo __('2015  All Rights Reserved.', 'gh-moz-exam'); ?></p>
+            </div>
+        </div>
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!---->
+<!---->
+<!--                <div class="footer-social">-->
+<!--                    --><?php
+//                    if( get_theme_mod( 'fb_chec' ) == true ) {
+//                        ?>
+<!--                        <a href="--><?php //echo get_theme_mod( 'fb_link' ); ?><!--" class="fb"></a>-->
+<!--                        --><?php
+//                    }
+//                    if( get_theme_mod( 'twit_chec' ) == true ) {
+//                        ?>
+<!--                        <a href="--><?php //echo get_theme_mod( 'twit_link' ); ?><!--" class="tw"></a>-->
+<!--                        --><?php
+//                    }
+//                    if( get_theme_mod( 'in_chec' ) == true ) {
+//                        ?>
+<!--                        <a href="--><?php //echo get_theme_mod( 'in_link' ); ?><!--" class="in"></a>-->
+<!--                    --><?php //} ?>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

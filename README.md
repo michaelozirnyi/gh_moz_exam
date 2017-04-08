@@ -2,6 +2,10 @@
 
 Author: `Mykhailo Ozirnyi`
 
+###Git
+
+https://github.com/michaelozirnyi/gh_moz_exam
+
 ###Panteon
 
 http://dev-gh-moz-exam.pantheonsite.io

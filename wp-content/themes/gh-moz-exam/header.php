@@ -21,35 +21,40 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-<!--	<a class="skip-link screen-reader-text" href="#content">--><?php //esc_html_e( 'Skip to content', 'gh-moz-exam' ); ?><!--</a>-->
-
 	<header id="masthead" class="site-header" role="banner">
         <div class="container">
+            <div class="row space-between justify-content-between">
+                <div class="main-logo">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <?php echo get_theme_mod('logo_first', 'aj'); ?>
+                        <span><?php echo get_theme_mod('logo_second', 'y'); ?></span>
+                    </a>
+                </div>
 
-<!--            <div class="site-branding">-->
-<!--                --><?php
-//                if ( is_front_page() && is_home() ) : ?>
-<!--                    <h1 class="site-title"><a href="--><?php //echo esc_url( home_url( '/' ) ); ?><!--" rel="home">--><?php //bloginfo( 'name' ); ?><!--</a></h1>-->
-<!--                --><?php //else : ?>
-<!--                    <p class="site-title"><a href="--><?php //echo esc_url( home_url( '/' ) ); ?><!--" rel="home">--><?php //bloginfo( 'name' ); ?><!--</a></p>-->
-<!--                --><?php
-//                endif;
-//
-//                $description = get_bloginfo( 'description', 'display' );
-//                if ( $description || is_customize_preview() ) : ?>
-<!--    <!--				<p class="site-description">--><?php ////echo $description; /* WPCS: xss ok. */ ?><!--<!--</p>-->
-<!--                --><?php
-//                endif; ?>
-<!--            </div><!-- .site-branding -->
-            <div class="logo">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Logo</a>
+                <nav class=" main-navigation navbar navbar-toggleable-md navbar-light bg-faded">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <nav id="site-navigation" class="main-navigation" role="navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'gh-moz-exam' ); ?></button>
-                <?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
-            </nav><!-- #site-navigation -->
         </div><!-- .container -->
 	</header><!-- #masthead -->
+
+    <div class="site-banner">
+        <?php
+        if ( is_home() && ! is_front_page() )  { ?>
+            <div class="bunner page-bunner" style="background: url()">
+
+                <h3 class="text-center"><?php single_post_title(); ?></h3>
+            </div>
+        <?php
+            } ?>
+    </div><!-- .site-branding -->
 
 	<div id="content" class="site-content">
 

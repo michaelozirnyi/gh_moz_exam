@@ -103,15 +103,7 @@ function gh_moz_exam_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
-    register_sidebar( array(
-        'name'          => esc_html__( 'Sidebar', 'gh-moz-exam' ),
-        'id'            => 'sidebar-2',
-        'description'   => esc_html__( 'Add widgets here.', 'gh-moz-exam' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
+
 }
 add_action( 'widgets_init', 'gh_moz_exam_widgets_init' );
 
@@ -123,7 +115,12 @@ function gh_moz_exam_scripts() {
 // register styles
     wp_register_style( 'style', get_template_directory_uri() . '/stylesheet/style.css' );
 
-    //add bootstrap from CDN
+
+
+    wp_register_style( 'font-awesome', get_template_directory_uri() . '/libs/bower_components/font-awesome/css/font-awesome.min.css' );
+    wp_enqueue_style( 'font-awesome' );
+
+        //add bootstrap from CDN
     wp_enqueue_style( 'bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' );
 
     wp_enqueue_script( 'jquery_js', 'https://code.jquery.com/jquery-3.1.1.slim.min.js');
@@ -176,11 +173,162 @@ require get_template_directory() . '/inc/jetpack.php';
 function load_fonts()
 {
     wp_register_style('et-googleFonts',
-        'https://fonts.googleapis.com/css?family=Oswald:300,400,700');
+        'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
     wp_enqueue_style( 'et-googleFonts');
 }
 add_action('wp_print_styles', 'load_fonts');
 
 
 
-// ===  Add   ===
+// ===  Add logo  ===
+function gh_exam_customize_register( $wp_customize ) {
+
+    $wp_customize->add_section('logo', array(
+        'title'       => __('Site Logo', 'gh-moz-exam'),
+        'description' => 'Text logo',
+        'priority' 	  => 2,
+    ));
+
+    $wp_customize->add_setting('logo_first', array(
+        'default'    => 'AJ',
+        'type'       => 'text',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'logo_first', array(
+        'label'    => __('First', 'gh-moz-exam'),
+        'section'  => 'logo',
+        'settings' => 'logo_first',
+    )));
+
+    $wp_customize->add_setting('logo_second', array(
+        'default'    => 'y',
+        'type'       => 'text',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'logo_second', array(
+        'label'    => __('Second', 'gh-moz-exam'),
+        'section'  => 'logo',
+        'settings' => 'logo_second',
+    )));
+
+            //
+    $wp_customize->add_section('footer', array(
+        'title'       => __('Footer', 'gh-moz-exam'),
+        'description' => 'Footer',
+        'priority' 	  => 15,
+    ));
+
+    $wp_customize->add_setting('logo_first', array(
+        'default'    => 'AJ',
+        'type'       => 'text',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'logo_first', array(
+        'label'    => __('First', 'gh-moz-exam'),
+        'section'  => 'logo',
+        'settings' => 'logo_first',
+    )));
+
+    // Contact section
+    $wp_customize->add_setting('phone', array(
+        'default'    => '123456789',
+        'type'       => 'text',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'phone', array(
+        'label'    => __('Phone', 'gh-moz-exam'),
+        'section'  => 'footer',
+        'settings' => 'phone',
+    )));
+}
+add_action('customize_register', 'gh_exam_customize_register');
+
+
+
+function post_types_clients(){
+
+    $labels = array (
+        'name' => __('Clients'),
+        'singular_name' => __('Clients'),
+        'add_new' => __('Add New', 'Client'),
+        'all_items' => __('All Clients'),
+        'add_new_item' => __('Add Client'),
+        'edit_item' => __('Edit Client'),
+        'new_item' => __('New Client'),
+        'view_item' => __('View Client'),
+        'search_items' => __('Search Client'),
+        'not_found' => __('No Client found'),
+        'not_fount_in_trash' => __('No Client')
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true,
+        'publicly_queryable' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'show_ui' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'custom-fields',
+            'post-formats',
+            'thumbnail',
+            'comments'
+        ),
+        'menu_position' => 4,
+        'exclude_form_search' => false
+    );
+    register_post_type('clients', $args);
+}
+
+add_action('init', 'post_types_clients');
+
+
+
+//========================================
+
+function post_types_offers(){
+
+    $labels = array (
+        'name' => __('Offers'),
+        'singular_name' => __('Offers'),
+        'add_new' => __('Add New', 'Offer'),
+        'all_items' => __('All Offers'),
+        'add_new_item' => __('Add Offer'),
+        'edit_item' => __('Edit Offer'),
+        'new_item' => __('New Offer'),
+        'view_item' => __('View Offer'),
+        'search_items' => __('Search Offer'),
+        'not_found' => __('No Offer found'),
+        'not_fount_in_trash' => __('No Offers')
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true,
+        'publicly_queryable' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'show_ui' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'custom-fields',
+            'post-formats',
+            'thumbnail',
+            'comments'
+        ),
+        'menu_position' => 5,
+        'exclude_form_search' => false
+    );
+    register_post_type('offers', $args);
+}
+
+add_action('init', 'post_types_offers');
