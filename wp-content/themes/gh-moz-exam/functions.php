@@ -42,15 +42,19 @@ function gh_moz_exam_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+    // This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'gh-moz-exam' ),
 	) );
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
+    register_nav_menus( array(
+        'menu-2' => esc_html__( 'Second menu', 'gh-moz-exam' ),
+    ) );
+
+    /*
+     * Switch default core markup for search form, comment form, and comments
+     * to output valid HTML5.
+     */
 	add_theme_support( 'html5', array(
 		'search-form',
 		'comment-form',
@@ -90,7 +94,7 @@ add_action( 'after_setup_theme', 'gh_moz_exam_content_width', 0 );
  */
 function gh_moz_exam_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'gh-moz-exam' ),
+		'name'          => esc_html__( 'Main Sidebar', 'gh-moz-exam' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'gh-moz-exam' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -98,6 +102,16 @@ function gh_moz_exam_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+    register_sidebar( array(
+        'name'          => esc_html__( 'Sidebar', 'gh-moz-exam' ),
+        'id'            => 'sidebar-2',
+        'description'   => esc_html__( 'Add widgets here.', 'gh-moz-exam' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'gh_moz_exam_widgets_init' );
 
@@ -105,6 +119,21 @@ add_action( 'widgets_init', 'gh_moz_exam_widgets_init' );
  * Enqueue scripts and styles.
  */
 function gh_moz_exam_scripts() {
+
+// register styles
+    wp_register_style( 'style', get_template_directory_uri() . '/stylesheet/style.css' );
+
+    //add bootstrap from CDN
+    wp_enqueue_style( 'bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' );
+
+    wp_enqueue_script( 'jquery_js', 'https://code.jquery.com/jquery-3.1.1.slim.min.js');
+    wp_enqueue_script( 'tether_js', 'https:///cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js');
+    wp_enqueue_script( 'bootstrap_js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js');
+
+    wp_enqueue_style( 'style' );
+
+
+// default styles and scripts
 	wp_enqueue_style( 'gh-moz-exam-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'gh-moz-exam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -141,3 +170,17 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+// ===  Add Google fonts  ===
+function load_fonts()
+{
+    wp_register_style('et-googleFonts',
+        'https://fonts.googleapis.com/css?family=Oswald:300,400,700');
+    wp_enqueue_style( 'et-googleFonts');
+}
+add_action('wp_print_styles', 'load_fonts');
+
+
+
+// ===  Add   ===
