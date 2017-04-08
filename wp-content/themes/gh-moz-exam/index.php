@@ -22,13 +22,7 @@ get_header(); ?>
                 <?php
                 if ( have_posts() ) :
 
-//                    if ( is_home() && ! is_front_page() ) : ?>
-<!--                        <header>-->
-<!--                            <h1 class="page-title screen-reader-text">--><?php //single_post_title(); ?><!--asdasd</h1>-->
-<!--                        </header>-->
-<!---->
-<!--                    --><?php
-//                    endif; ?>
+                    ?>
 
                     <ul class="flexes posts-list">
 
@@ -48,8 +42,7 @@ get_header(); ?>
                                         <?php the_excerpt(); ?>
 
                                         <div class="data">
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                            <span class="post-data">
+                                            <span class="post-data"><i class="fa fa-clock-o" aria-hidden="true"></i>
                                                 <?php echo get_the_date('d, m, Y');?>
                                             </span>
                                         </div>

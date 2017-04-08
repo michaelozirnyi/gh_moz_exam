@@ -25,7 +25,113 @@ function gh_moz_exam_customize_preview_js() {
 }
 add_action( 'customize_preview_init', 'gh_moz_exam_customize_preview_js' );
 
-// ===  Add logo  ===
+
+
+// ===  Add  ===
+function gh_exam_customize_register( $wp_customize ) {
+
+    $wp_customize->add_section('logo', array(
+        'title'       => __('Site Logo', 'gh-moz-exam'),
+        'description' => 'Text logo',
+        'priority' 	  => 2,
+    ));
+
+    $wp_customize->add_setting('logo_first', array(
+        'default'    => 'AJ',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'logo_first', array(
+        'label'    => __('First', 'gh-moz-exam'),
+        'section'  => 'logo',
+        'settings' => 'logo_first',
+        'type'       => 'text',
+    )));
+
+    $wp_customize->add_setting('logo_second', array(
+        'default'    => 'y',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'logo_second', array(
+        'label'    => __('Second', 'gh-moz-exam'),
+        'type'       => 'text',
+        'section'  => 'logo',
+        'settings' => 'logo_second',
+    )));
+
+    $wp_customize->add_section('bg-under-header', array(
+        'title'       => __('Backgroung under heager  on pages', 'gh-moz-exam'),
+        'description' => 'Text logo',
+        'priority' 	  => 2,
+    ));
+    $wp_customize->add_setting('bg-blog', array(
+        'default'    => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'bg-blog', array(
+        'label'    => __('Bg image', 'gh-moz-exam'),
+        'section'  => 'bg-under-header',
+        'settings' => 'bg-blog',
+    )));
+
+
+    //
+    $wp_customize->add_section('footer', array(
+        'title'       => __('Footer', 'gh-moz-exam'),
+        'description' => 'Footer',
+        'priority' 	  => 15,
+    ));
+
+
+    // Contact section
+    $wp_customize->add_setting('description-contact', array(
+        'default'    => 'description',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'description-contact', array(
+        'label'    => __('Contact Description ', 'gh-moz-exam'),
+        'section'  => 'footer',
+        'settings' => 'description-contact',
+        'type'     => 'textarea',
+    )));
+
+    $wp_customize->add_setting('phone', array(
+        'default'    => '123456789',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'phone', array(
+        'label'    => __('Phone', 'gh-moz-exam'),
+        'section'  => 'footer',
+        'settings' => 'phone',
+        'type'     => 'text',
+    )));
+
+    $wp_customize->add_setting('addres', array(
+        'default'    => 'addres   cont',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'addres', array(
+        'label'    => __('addres', 'gh-moz-exam'),
+        'section'  => 'footer',
+        'settings' => 'addres',
+        'type'     => 'text',
+    )));
+
+    $wp_customize->add_setting('bg-contact', array(
+        'default'    => '',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'bg-contact', array(
+        'label'    => __('Bg image', 'gh-moz-exam'),
+        'section'  => 'footer',
+        'settings' => 'bg-contact',
+    )));
+
+
+
+}
+add_action('customize_register', 'gh_exam_customize_register');
+
+// ===  Add  custom  ===
 function gh_exam_customize_register_home( $wp_customize ) {
 
     $wp_customize->add_section('home', array(

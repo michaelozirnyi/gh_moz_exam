@@ -9,42 +9,56 @@
   height: 90px;
   /*--- Nav ---*/
 }
-/* line 49, ../sass/_header.scss */
+/* line 8, ../sass/_header.scss */
 .site-header .main-navigation {
   display: inline-block;
   background: transparent;
   padding: 0;
 }
-/* line 54, ../sass/_header.scss */
+/* line 13, ../sass/_header.scss */
 .site-header .main-navigation .navbar-collapse {
   margin-top: 30px;
 }
-/* line 58, ../sass/_header.scss */
+/* line 17, ../sass/_header.scss */
 .site-header .main-navigation ul {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
 }
-/* line 66, ../sass/_header.scss */
+/* line 25, ../sass/_header.scss */
 .site-header .main-navigation ul li a {
   text-transform: uppercase;
   padding: 5px 15px;
   color: #fff;
   font: 400 18px "Roboto", sans-serif;
 }
-/* line 72, ../sass/_header.scss */
+/* line 31, ../sass/_header.scss */
 .site-header .main-navigation ul li a:hover {
   color: #ff4848;
 }
-/* line 79, ../sass/_header.scss */
+/* line 38, ../sass/_header.scss */
 .site-header .main-navigation ul .current-menu-item a {
   color: #ff4848;
 }
 
-/* line 89, ../sass/_header.scss */
-.site-banner .bunner {
+/* line 45, ../sass/_header.scss */
+.site-banner {
   height: 300px;
+  margin-bottom: 100px;
+  background-size: cover;
+}
+/* line 52, ../sass/_header.scss */
+.site-banner .bunner {
+  padding-top: 100px;
+}
+/* line 55, ../sass/_header.scss */
+.site-banner .bunner h3 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  position: relative;
+  z-index: 100;
 }
 
 /*-----===  Footer style  ===-----*/
@@ -52,8 +66,6 @@
 .site-footer {
   background-color: #ff4848;
   /*---  Cont -----*/
-  /*---- Footer Logo ----*/
-  /*-----------*/
 }
 /* line 6, ../sass/_footer.scss */
 .site-footer .clients {
@@ -90,21 +102,63 @@
   font: 700 12px/33px Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
-/* line 47, ../sass/_footer.scss */
-.site-footer .contact-section {
-  color: #fff;
+
+/* line 50, ../sass/_footer.scss */
+.contact-section {
+  position: relative;
 }
-/* line 56, ../sass/_footer.scss */
-.site-footer .logo-footer-section {
+/* line 53, ../sass/_footer.scss */
+.contact-section:after {
+  background-size: cover;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* line 64, ../sass/_footer.scss */
+.contact-section h3 {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #fff !important;
+}
+/* line 72, ../sass/_footer.scss */
+.contact-section .contact-info {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+/* line 76, ../sass/_footer.scss */
+.contact-section .contact-info .description,
+.contact-section .contact-info .phone,
+.contact-section .contact-info .addres {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #fff !important;
+  margin-bottom: 30px;
+}
+/* line 89, ../sass/_footer.scss */
+.contact-section .contact-info .description i,
+.contact-section .contact-info .phone i,
+.contact-section .contact-info .addres i {
+  color: #fff;
+  font-size: 30px;
+}
+
+/* line 97, ../sass/_footer.scss */
+.logo-footer-section {
   background-color: #17212a;
 }
-/* line 59, ../sass/_footer.scss */
-.site-footer .logo-footer-section .foot-logo {
-  height: 220px;
-  padding-top: 60px;
+
+/* line 101, ../sass/_footer.scss */
+.copywriting-footer-section {
+  background-color: #ff4848;
+  /*-----------*/
 }
-/* line 66, ../sass/_footer.scss */
-.site-footer .copywrit {
+/* line 105, ../sass/_footer.scss */
+.copywriting-footer-section .copywrit {
   text-align: center;
   color: #fff;
   font-size: 18px;
@@ -112,8 +166,6 @@
   line-height: 80px;
 }
 
-/*-------@media--------*/
-/*-------@media--------*/
 /* line 3, ../sass/_helper-classes.scss */
 .text-white {
   color: #fff;
@@ -511,6 +563,7 @@ a:hover {
 /* line 151, ../sass/_home-page.scss */
 .portfolio {
   padding: 100px 0;
+  text-align: center;
 }
 
 /* line 2, ../sass/_blog-page.scss */
@@ -608,74 +661,23 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-/* line 22, ../sass/style.scss */
-h1 {
-  font: 300 30px "Oswald", sans-serif;
-  margin: 20px 0;
-}
-
-/* line 27, ../sass/style.scss */
-h3 {
-  font: 700 16px/16px "Oswald", sans-serif;
-  text-transform: uppercase;
-}
-
-/*
-h2 {
-  font: 400 35px/21px $gothic;
-}
-
-h3 {
-  font: 400 30px/30px $gothic;
-}
-
-h4 {
-  font: 400 23px/30px $gothic;
-  margin-bottom: 25px;
-}
-
-h5 {
-  font: 400 20px/21px $gothic;
-  margin-bottom: 35px;
-}
-
-h6 {
-  font: 400 18px/32px $gothic;
-}
-
-p {
-  font: 400 18px/32px $gothic;
-}
-
-.bold {
-  font-weight: 900;
-}
-
-.btn {
-  height: 50px;
-  background-color: white;
-  border-radius: 25px;
-  padding: 0 50px;
-  box-shadow: 0 10px 40px rgba(54, 54, 54, 0.15);
-}
-*/
-/* line 71, ../sass/style.scss */
+/* line 23, ../sass/style.scss */
 a {
   text-decoration: none;
 }
 
-/* line 75, ../sass/style.scss */
+/* line 27, ../sass/style.scss */
 .sidebar {
   width: 300px;
   top: 0;
   right: 0;
 }
 
-/* line 83, ../sass/style.scss */
+/* line 35, ../sass/style.scss */
 .darkness {
   position: relative;
 }
-/* line 86, ../sass/style.scss */
+/* line 38, ../sass/style.scss */
 .darkness:before {
   content: '';
   position: absolute;
@@ -685,7 +687,7 @@ a {
   opacity: .8;
 }
 
-/* line 96, ../sass/style.scss */
+/* line 48, ../sass/style.scss */
 .main-logo a {
   width: 130px;
   height: 90px;
@@ -699,7 +701,7 @@ a {
   color: #fff;
   margin: 0 auto;
 }
-/* line 109, ../sass/style.scss */
+/* line 61, ../sass/style.scss */
 .main-logo a:before {
   position: absolute;
   content: '';
@@ -710,7 +712,7 @@ a {
   background-color: #ff4848;
   box-shadow: 2.5px 4.3px 6px rgba(0, 1, 1, 0.75);
 }
-/* line 120, ../sass/style.scss */
+/* line 72, ../sass/style.scss */
 .main-logo a:after {
   position: absolute;
   content: '';
@@ -721,7 +723,7 @@ a {
   background-color: #2c3e50;
   box-shadow: 2.5px 4.3px 6px rgba(0, 1, 1, 0.75);
 }
-/* line 131, ../sass/style.scss */
+/* line 83, ../sass/style.scss */
 .main-logo a span {
   color: #ff4848;
   text-transform: none;

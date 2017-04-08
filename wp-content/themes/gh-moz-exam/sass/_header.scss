@@ -1,0 +1,64 @@
+/*-----===  Header style  ===-----*/
+.site-header {
+  background: $dark-blue;
+  height: 90px;
+
+
+  /*--- Nav ---*/
+  .main-navigation {
+    display: inline-block;
+    background: transparent;
+    padding: 0;
+
+    .navbar-collapse {
+      margin-top: 30px;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+
+      li {
+
+        a {
+          text-transform: uppercase;
+          padding: 5px 15px;
+          color: $white;
+          font: 400 18px $roboto;
+
+          &:hover{
+            color: $red;
+          }
+        }
+      }
+
+      .current-menu-item {
+        a {
+          color: $red;
+        }
+      }
+    }
+  }
+}
+.site-banner {
+  //margin-bottom: 80px;
+  height: 300px;
+  margin-bottom: 100px;
+
+  background-size: cover;
+
+  .bunner {
+    padding-top: 100px;
+
+    h3 {
+      color: $white;
+      font-size: 30px;
+      font-weight: 700;
+      position: relative;
+      z-index: 100;
+    }
+
+  }
+}

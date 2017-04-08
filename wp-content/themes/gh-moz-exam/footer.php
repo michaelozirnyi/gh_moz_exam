@@ -54,25 +54,21 @@
             </div>
         </div>
 
-
-
-
-
-
-        <div class="contact-section darkness">
+        <div class="contact-section darkness" style=" background: url( <?php echo get_theme_mod('bg-contact', '')?>) ">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 contact">
+                    <div class="col-xl-6 col-lg-6 contact-info">
                         <h3><?php echo __('Contact Us:', 'gh-moz-exam'); ?></h3>
-                        <p>It is a long established fact that a reader will be distracted by
-                            the readable content of a page when looking at its layout.</p>
+                        <div class="description">
+                            <?php echo get_theme_mod('description-contact', 'Some cont  ... ')?>
+                        </div>
                         <div class="phone">
-                            icon
-                            <span><?php echo get_theme_mod('footer', '123456789')?></span>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <?php echo get_theme_mod('phone', '123456789')?>
                         </div>
                         <div class="addres">
-                            icon
-                            <span></span>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span><?php echo get_theme_mod('addres', '123 Office, Street')?></span>
                         </div>
                         <div class="map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10375.48860485298!2d32.075212799999996!3d49.449133350000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1491642735446" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -85,7 +81,7 @@
             </div>
         </div>
 
-        <div class="logo-footer-section">
+            <div class="logo-footer-section">
             <div class="container">
                 <div class="foot-logo main-logo">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>">

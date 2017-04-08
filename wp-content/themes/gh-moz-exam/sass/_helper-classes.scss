@@ -1,0 +1,26 @@
+.text {
+
+  &-white {
+    color: $white;
+  }
+
+  &-gray {
+    color: $gray;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-right {
+    text-align: right;
+  }
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+a:hover {
+  text-decoration: none;
+}

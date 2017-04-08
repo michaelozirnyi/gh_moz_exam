@@ -45,16 +45,17 @@
         </div><!-- .container -->
 	</header><!-- #masthead -->
 
-    <div class="site-banner">
+
         <?php
         if ( is_home() && ! is_front_page() )  { ?>
-            <div class="bunner page-bunner" style="background: url()">
-
-                <h3 class="text-center"><?php single_post_title(); ?></h3>
+            <div class="site-banner darkness" style=" background: url( <?php echo get_theme_mod('bg-blog', '')?>)">
+                <div class="bunner">
+                    <h3 class="text-center"><?php single_post_title(); ?></h3>
+                </div>
             </div>
         <?php
             } ?>
-    </div><!-- .site-branding -->
+
 
 	<div id="content" class="site-content">
 
